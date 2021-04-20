@@ -1,13 +1,19 @@
 <template>
-  Messages go here
+  <Message v-for="(m, index) in messages" :key="index" :message="m"/>
+  <NewMessage />
 </template>
 
 <script>
-export default {
 
-}
+    import { database } from '../helpers/useFirebase'
+
+    export default{
+
+        setup(){
+        const { messages } = database()
+        console.log(messages)
+
+        return {messages}
+        }
+    }
 </script>
-
-<style>
-
-</style>
