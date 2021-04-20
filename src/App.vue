@@ -1,8 +1,21 @@
 <template>
-  <div
-    class="min-h-screen flex justify-center items-center text-coolGray-300 font-extralight space-x-4 text-6xl"
-  >
-    <mdi:controller-classic-outline />
-    <h1 class="">Hello There</h1>
-  </div>
+  <Navbar />
+  <Messages v-if="isAuthenticated"/>
+  <NoAuth v-else/>
 </template>
+
+<script>
+
+import { authentication } from './helpers/useFirebase'
+
+export default {
+
+  setup(){
+
+    const { isAuthenticated } = authentication()
+
+    return { isAuthenticated }
+  }
+}
+
+</script>
